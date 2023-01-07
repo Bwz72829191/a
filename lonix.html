@@ -1,3 +1,48 @@
+<script type="text/javascript">
+var lastResFind=""; // последний удачный результат
+var copy_page=""; // копия страницы в ихсодном виде
+function TrimStr(s) {
+     s = s.replace( /^\s+/g, '');
+  return s.replace( /\s+$/g, '');
+}
+function FindOnPage(inputId) {//ищет текст на странице, в параметр передается ID поля для ввода
+  var obj = window.document.getElementById(inputId);
+  var textToFind;
+ 
+  if (obj) {
+    textToFind = TrimStr(obj.value);//обрезаем пробелы
+  } else {
+    alert("Введенная фраза не найдена");
+    return;
+  }
+  if (textToFind == "") {
+    alert("Вы ничего не ввели");
+    return;
+  }
+ 
+  if(document.body.innerHTML.indexOf(textToFind)=="-1")
+  alert("Ничего не найдено, проверьте правильность ввода!");
+ 
+  if(copy_page.length>0)
+        document.body.innerHTML=copy_page;
+  else copy_page=document.body.innerHTML;
+
+ 
+  document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");//стираем предыдущие якори для скрола
+  document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:red'>"+textToFind+"</a>"); //Заменяем найденный текст ссылками с якорем;
+  lastResFind=textToFind; // сохраняем фразу для поиска, чтобы в дальнейшем по ней стереть все ссылки
+  window.location = '#'+textToFind;//перемещаем скрол к последнему найденному совпадению
+ }
+</script>
+<body>
+<h2>Введите фразу для поиска</h2>
+<input type="text" id="text-to-find" value="">
+<input type="button" onclick="javascript: FindOnPage('text-to-find'); return false;" value="Искать"/>
+<br/>
+<hr/>
+<font color="white">
 <center>
-{"LoniX":{"password":"555"},"GMx":{"password":"GMx"},"uuul":{"password":"uuul"},"\u043e\u043b\u0435\u0433":{"password":"19711981"},"Negr":{"password":"Dprxxxsd228"},"popa89516908184@gmail.com":{"password":"1111111111111"},"art89516908185@gmail.com":{"password":"1234567890"},"lola777rb":{"password":"1234567890"},"s1mple":{"password":"ghazxvb3527uy"},"JD":{"password":"952"},"S1mple":{"password":"ghazxvb3527uy"},"Dex":{"password":"huymorza"},"Huy":{"password":"Morz"},"Huyblyat":{"password":"Morza"},"HuyOs":{"password":"Os"},"DexMorz":{"password":"more"},"SD":{"password":"234"},"w1ngol":{"password":"upazul2503"},"verskiy":{"password":"pon"},"verskiyy":{"password":"pon666"},"gey":{"password":"1"},"Ju":{"password":"125"},"Tut":{"password":"25"},"RUSLAN":{"password":"kavkaz2904"},"Semen":{"password":"qwerty123"},"hah":{"password":"nikita222"},"123":{"password":"123"},"teri":{"password":"aktas999"},"Rer":{"password":"228"}}
-</center>
+	{"LoniX":{"password":"555"},"GMx":{"password":"GMx"},"uuul":{"password":"uuul"},"\u043e\u043b\u0435\u0433":{"password":"19711981"},"Negr":{"password":"Dprxxxsd228"},"popa89516908184@gmail.com":{"password":"1111111111111"},"art89516908185@gmail.com":{"password":"1234567890"},"lola777rb":{"password":"1234567890"},"s1mple":{"password":"ghazxvb3527uy"},"JD":{"password":"952"},"S1mple":{"password":"ghazxvb3527uy"},"Dex":{"password":"huymorza"},"Huy":{"password":"Morz"},"Huyblyat":{"password":"Morza"},"HuyOs":{"password":"Os"},"DexMorz":{"password":"more"},"SD":{"password":"234"},"w1ngol":{"password":"upazul2503"},"verskiy":{"password":"pon"},"verskiyy":{"password":"pon666"},"gey":{"password":"1"},"Ju":{"password":"125"},"Tut":{"password":"25"},"RUSLAN":{"password":"kavkaz2904"},"Semen":{"password":"qwerty123"},"hah":{"password":"nikita222"},"123":{"password":"123"},"teri":{"password":"aktas999"},"Rer":{"password":"228"}}
+	</font>
+	<hr>
+	</center>
